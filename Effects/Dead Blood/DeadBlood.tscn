@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpwuf0eevvq5l"]
+
+[ext_resource type="Texture2D" uid="uid://djl16jknkr5o6" path="res://Effects/Dead Blood/B100.png" id="1_bd385"]
+[ext_resource type="Texture2D" uid="uid://b5l54e1hv1qer" path="res://Effects/Dead Blood/B101.png" id="2_4lgby"]
+[ext_resource type="Texture2D" uid="uid://116xpujbjhtw" path="res://Effects/Dead Blood/B102.png" id="3_84oop"]
+[ext_resource type="Script" path="res://Effects/Effect.gd" id="4_en8ee"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mdceg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bd385")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4lgby")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_84oop")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_mdceg")
+frame_progress = 0.479595
+script = ExtResource("4_en8ee")

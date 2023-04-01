@@ -1,0 +1,127 @@
+[gd_scene load_steps=20 format=3 uid="uid://c8822jhfc5fos"]
+
+[ext_resource type="Texture2D" uid="uid://ch2vg2r680osp" path="res://Assets/Characters/SNAKE.png" id="1_3m7ah"]
+[ext_resource type="Texture2D" uid="uid://nni60vlsv82k" path="res://Assets/Shadows/SmallShadow.png" id="1_7td6d"]
+[ext_resource type="Script" path="res://Enemies/Snakes/snake.gd" id="1_y01oj"]
+[ext_resource type="PackedScene" uid="uid://b1ijb03jypdsl" path="res://Enemies/WanderController.tscn" id="3_6h3dl"]
+[ext_resource type="PackedScene" uid="uid://bd331cb7i3sw4" path="res://Hit and HurtBox/hurt_box.tscn" id="3_24pts"]
+[ext_resource type="PackedScene" uid="uid://bbevdnppe5how" path="res://Stats/Stats.tscn" id="6_3s636"]
+[ext_resource type="PackedScene" uid="uid://dp0kbkla8qrx8" path="res://Enemies/BodyDetectionZone.tscn" id="7_2hju7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6a1u"]
+atlas = ExtResource("1_3m7ah")
+region = Rect2(1, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gndx3"]
+atlas = ExtResource("1_3m7ah")
+region = Rect2(17, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_op72u"]
+atlas = ExtResource("1_3m7ah")
+region = Rect2(33, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lhtb"]
+atlas = ExtResource("1_3m7ah")
+region = Rect2(49, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pber5"]
+atlas = ExtResource("1_3m7ah")
+region = Rect2(65, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqv6u"]
+atlas = ExtResource("1_3m7ah")
+region = Rect2(81, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytdgn"]
+atlas = ExtResource("1_3m7ah")
+region = Rect2(97, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7d2rn"]
+atlas = ExtResource("1_3m7ah")
+region = Rect2(113, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6qkuv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6a1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gndx3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_op72u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lhtb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pber5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqv6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytdgn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7d2rn")
+}],
+"loop": true,
+"name": &"Left",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vsybj"]
+radius = 7.0
+height = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fs8h0"]
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rte8f"]
+radius = 100.0
+
+[node name="Snake" type="CharacterBody2D"]
+collision_mask = 3
+script = ExtResource("1_y01oj")
+
+[node name="ShadowSprite" type="Sprite2D" parent="."]
+scale = Vector2(1.6, 0.75)
+texture = ExtResource("1_7td6d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_6qkuv")
+animation = &"Left"
+autoplay = "Left"
+
+[node name="WanderController" parent="." instance=ExtResource("3_6h3dl")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_vsybj")
+
+[node name="HurtBox" parent="." instance=ExtResource("3_24pts")]
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_fs8h0")
+
+[node name="Stats" parent="." instance=ExtResource("6_3s636")]
+max_health = 3
+
+[node name="BodyDetectionZone" parent="." instance=ExtResource("7_2hju7")]
+
+[node name="CollisionShape2D" parent="BodyDetectionZone" index="0"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_rte8f")
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="dead" from="Stats" to="." method="_on_stats_dead"]
+
+[editable path="HurtBox"]
+[editable path="BodyDetectionZone"]

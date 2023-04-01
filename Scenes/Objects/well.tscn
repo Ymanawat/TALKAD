@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dujxwf3bnrh5n"]
+
+[ext_resource type="Texture2D" uid="uid://5ox5g64lmes0" path="res://Assets/Props/well.png" id="1_mcsvn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j1277"]
+radius = 12.0
+height = 64.0
+
+[node name="Well" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_mcsvn")
+offset = Vector2(0, -22)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_j1277")

@@ -1,0 +1,176 @@
+[gd_scene load_steps=15 format=3 uid="uid://7sfdf7ktxc4x"]
+
+[ext_resource type="PackedScene" uid="uid://doscd0kigaqo5" path="res://Scenes/Objects/Teleport.tscn" id="4_as8y7"]
+[ext_resource type="Texture2D" uid="uid://bd34o1u40p6pg" path="res://Assets/TileSets/wall-8 - 2 tiles tall-transparency.png" id="5_wwm7t"]
+[ext_resource type="PackedScene" uid="uid://fyhp8kgqtfyp" path="res://Scenes/Objects/Tree1.tscn" id="6_jqh81"]
+[ext_resource type="Texture2D" uid="uid://c4gm8w75hm1qo" path="res://Assets/TileSets/wall-8 - 2 tiles tall.png" id="6_npi2o"]
+[ext_resource type="PackedScene" uid="uid://b8v1pwhb0tknu" path="res://Scenes/Objects/Bush.tscn" id="7_c2e27"]
+[ext_resource type="Texture2D" uid="uid://bkhu0ajuhj73m" path="res://Assets/TileSets/Screenshot 2023-03-12 235024.png" id="7_gie84"]
+[ext_resource type="PackedScene" uid="uid://by6drwyiqn42c" path="res://Scenes/Objects/tree_2.tscn" id="8_8hoxo"]
+[ext_resource type="PackedScene" uid="uid://x8m75k0bsf1y" path="res://Scenes/Objects/Pillar.tscn" id="9_uwu10"]
+[ext_resource type="PackedScene" uid="uid://bsbti2nrf53ef" path="res://Scenes/Objects/Plant.tscn" id="10_nk00q"]
+[ext_resource type="PackedScene" uid="uid://bwcuj27glx103" path="res://Player/Player.tscn" id="10_srsvh"]
+[ext_resource type="PackedScene" uid="uid://c8822jhfc5fos" path="res://Enemies/Snakes/snake.tscn" id="11_h50r4"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hk5eb"]
+texture = ExtResource("5_wwm7t")
+3:9/size_in_atlas = Vector2i(4, 3)
+3:9/0 = 0
+3:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:9/0/physics_layer_0/angular_velocity = 0.0
+3:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-31, -23.5, 31, -23.5, 32, 20, -33, 19)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_egyqt"]
+texture = ExtResource("6_npi2o")
+4:4/size_in_atlas = Vector2i(2, 2)
+4:4/0 = 0
+4:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:4/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_f0fgj"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_hk5eb")
+sources/1 = SubResource("TileSetAtlasSource_egyqt")
+
+[node name="World" type="Node2D"]
+y_sort_enabled = true
+position = Vector2(-8, -16)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -706.0
+offset_top = -671.0
+offset_right = 1294.0
+offset_bottom = 1329.0
+scale = Vector2(1, 0.962)
+texture = ExtResource("7_gie84")
+stretch_mode = 1
+
+[node name="Teleport" parent="." instance=ExtResource("4_as8y7")]
+position = Vector2(270, 98)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("10_srsvh")]
+position = Vector2(189, 170)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(-280, -367)
+tile_set = SubResource("TileSet_f0fgj")
+format = 2
+layer_0/tile_data = PackedInt32Array(65529, 196608, 9, 65530, 196608, 9, 65531, 196608, 9, 65532, 196608, 9, 65533, 196608, 9, 65534, 196608, 9, 65535, 196608, 9, 0, 196608, 9, 1, 196608, 9, 2, 196608, 9, 3, 196608, 9, 4, 196608, 9, 5, 196608, 9, 6, 196608, 9, 7, 196608, 9, 8, 196608, 9, 9, 196608, 9, 10, 196608, 9, 11, 196608, 9, 12, 196608, 9, 13, 196608, 9, -524252, 196608, 9, -524251, 196608, 9, -524250, 196608, 9, -524249, 196608, 9, -524248, 196608, 9, -524247, 196608, 9, -524246, 196608, 9, -524245, 196608, 9, -524244, 196608, 9, -524243, 196608, 9, -524242, 196608, 9, -524241, 196608, 9, -524240, 196608, 9, -458703, 196608, 9, -458702, 196608, 9, -458701, 196608, 9, -458700, 196608, 9, -458699, 196608, 9, -458698, 196608, 9, -458697, 196608, 9, -458696, 196608, 9, -458695, 196608, 9, -458694, 196608, 9, -458693, 196608, 9, -458692, 196608, 9, -458691, 196608, 9, -458690, 196608, 9, -458689, 196608, 9, -458688, 196608, 9, -458687, 196608, 9, -458686, 196608, 9, -458685, 196608, 9, -458684, 196608, 9, -458683, 196608, 9, -458682, 196608, 9, -458681, 196608, 9, -458680, 196608, 9, 65613, 196608, 9, 65614, 196608, 9, 65615, 196608, 9, 65616, 196608, 9, 65617, 196608, 9, 65618, 196608, 9, 65619, 196608, 9, 65620, 196608, 9, 65621, 196608, 9, 65622, 196608, 9, 65623, 196608, 9, 65624, 196608, 9, 65625, 196608, 9, 65626, 196608, 9)
+
+[node name="Node2D" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Tree" parent="Node2D" instance=ExtResource("6_jqh81")]
+position = Vector2(135, 70)
+
+[node name="Tree6" parent="Node2D" instance=ExtResource("6_jqh81")]
+position = Vector2(-291, 296)
+
+[node name="Tree7" parent="Node2D" instance=ExtResource("6_jqh81")]
+position = Vector2(659, 385)
+
+[node name="Tree8" parent="Node2D" instance=ExtResource("6_jqh81")]
+position = Vector2(602, 385)
+
+[node name="Tree9" parent="Node2D" instance=ExtResource("6_jqh81")]
+position = Vector2(602, 320)
+
+[node name="Tree10" parent="Node2D" instance=ExtResource("6_jqh81")]
+position = Vector2(515, 425)
+
+[node name="Tree11" parent="Node2D" instance=ExtResource("6_jqh81")]
+position = Vector2(580, 4)
+
+[node name="Tree2" parent="Node2D" instance=ExtResource("6_jqh81")]
+position = Vector2(77, 50)
+
+[node name="Tree3" parent="Node2D" instance=ExtResource("6_jqh81")]
+position = Vector2(-138, 306)
+
+[node name="Tree4" parent="Node2D" instance=ExtResource("6_jqh81")]
+position = Vector2(285, 344)
+
+[node name="Tree5" parent="Node2D" instance=ExtResource("6_jqh81")]
+position = Vector2(475, 31)
+
+[node name="StaticBody2D" parent="Node2D" instance=ExtResource("7_c2e27")]
+position = Vector2(-133, 79)
+
+[node name="StaticBody2D2" parent="Node2D" instance=ExtResource("7_c2e27")]
+position = Vector2(-112, 85)
+
+[node name="StaticBody2D3" parent="Node2D" instance=ExtResource("7_c2e27")]
+position = Vector2(-144, 95)
+
+[node name="StaticBody2D4" parent="Node2D" instance=ExtResource("7_c2e27")]
+position = Vector2(-158, 84)
+
+[node name="StaticBody2D5" parent="Node2D" instance=ExtResource("7_c2e27")]
+position = Vector2(-139, 65)
+
+[node name="StaticBody2D6" parent="Node2D" instance=ExtResource("7_c2e27")]
+position = Vector2(54, 253)
+
+[node name="StaticBody2D7" parent="Node2D" instance=ExtResource("7_c2e27")]
+position = Vector2(84, 263)
+
+[node name="StaticBody2D8" parent="Node2D" instance=ExtResource("7_c2e27")]
+position = Vector2(-49, 367)
+
+[node name="Tree12" parent="Node2D" instance=ExtResource("8_8hoxo")]
+position = Vector2(134, 38)
+
+[node name="Tree13" parent="Node2D" instance=ExtResource("8_8hoxo")]
+position = Vector2(533, 38)
+
+[node name="Tree14" parent="Node2D" instance=ExtResource("8_8hoxo")]
+position = Vector2(301, -101)
+
+[node name="Tree15" parent="Node2D" instance=ExtResource("8_8hoxo")]
+position = Vector2(-118, 460)
+
+[node name="Tree16" parent="Node2D" instance=ExtResource("8_8hoxo")]
+position = Vector2(-160, 487)
+
+[node name="Tree17" parent="Node2D" instance=ExtResource("8_8hoxo")]
+position = Vector2(-208, 464)
+
+[node name="StaticBody2D9" parent="Node2D" instance=ExtResource("10_nk00q")]
+position = Vector2(152, 214)
+
+[node name="StaticBody2D10" parent="Node2D" instance=ExtResource("10_nk00q")]
+position = Vector2(165, 114)
+
+[node name="StaticBody2D11" parent="Node2D" instance=ExtResource("10_nk00q")]
+position = Vector2(441, 209)
+
+[node name="Pillar" parent="." instance=ExtResource("9_uwu10")]
+position = Vector2(-30, 115)
+
+[node name="Pillar2" parent="." instance=ExtResource("9_uwu10")]
+position = Vector2(-35, 210)
+
+[node name="Snakes" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Snake" parent="Snakes" instance=ExtResource("11_h50r4")]
+
+[node name="Snake2" parent="Snakes" instance=ExtResource("11_h50r4")]
+position = Vector2(422, 156)
+
+[node name="Snake3" parent="Snakes" instance=ExtResource("11_h50r4")]
+position = Vector2(2, 191)
+
+[node name="Snake4" parent="Snakes" instance=ExtResource("11_h50r4")]
+position = Vector2(176, 317)
+
+[node name="Snake5" parent="Snakes" instance=ExtResource("11_h50r4")]
+position = Vector2(128, -232)
+
+[node name="Snake6" parent="Snakes" instance=ExtResource("11_h50r4")]
+position = Vector2(-388, -25)
+
+[node name="Snake7" parent="Snakes" instance=ExtResource("11_h50r4")]
+position = Vector2(785, 225)

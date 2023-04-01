@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsbti2nrf53ef"]
+
+[ext_resource type="Texture2D" uid="uid://odxp0cf5pcqx" path="res://Assets/Objects/Plant.png" id="1_bgblc"]
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("1_bgblc")
+offset = Vector2(0, -10)

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://doscd0kigaqo5"]
+
+[ext_resource type="Texture2D" uid="uid://ocealih08iet" path="res://Assets/Objects/Teleport.png" id="1_r2yae"]
+
+[node name="Teleport" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_r2yae")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-63, 76, -45, 62, -54, 58, -53, 0, -3, -24, 51, 1, 51, 57, 45, 61, 64, 77, 60, 79, 28, 53, 12, 62, 37.0686, 91.3378, 34, 93, 12, 80, 0, 87, -13, 80, -34, 93, -38.952, 90.0971, -12, 66, -29, 53, -59.0574, 78.3112)

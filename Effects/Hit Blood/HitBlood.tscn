@@ -1,0 +1,90 @@
+[gd_scene load_steps=14 format=3 uid="uid://cgxeebbwakxng"]
+
+[ext_resource type="Texture2D" uid="uid://du5ylb2vn5qn8" path="res://Effects/Hit Blood/Hit Blood.png" id="1_81ewu"]
+[ext_resource type="Script" path="res://Effects/Effect.gd" id="2_aycqk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aiw6w"]
+atlas = ExtResource("1_81ewu")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kc2co"]
+atlas = ExtResource("1_81ewu")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arq7x"]
+atlas = ExtResource("1_81ewu")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jr2b"]
+atlas = ExtResource("1_81ewu")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3u5d"]
+atlas = ExtResource("1_81ewu")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ky8y"]
+atlas = ExtResource("1_81ewu")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0yug2"]
+atlas = ExtResource("1_81ewu")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5dep"]
+atlas = ExtResource("1_81ewu")
+region = Rect2(1024, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5okb2"]
+atlas = ExtResource("1_81ewu")
+region = Rect2(1152, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkcer"]
+atlas = ExtResource("1_81ewu")
+region = Rect2(1280, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uvabo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aiw6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kc2co")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arq7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jr2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3u5d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ky8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0yug2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5dep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5okb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkcer")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="HitBloodEffect" type="AnimatedSprite2D"]
+top_level = true
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_uvabo")
+frame = 1
+frame_progress = 0.981987
+script = ExtResource("2_aycqk")
